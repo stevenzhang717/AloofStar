@@ -10,7 +10,7 @@ const DEFAULT = {
 export default function(state = DEFAULT, action) {
   switch (action.type) {
     case sessionAction.SET_SESSION:
-      return action.session;
+      return { ...DEFAULT, ...action.session };
     case sessionAction.SET_SESSION_ERROR:
       return { ...state, error: action.error };
     default:

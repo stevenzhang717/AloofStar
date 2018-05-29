@@ -17,7 +17,7 @@ class EditPostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(submitPost(this.state, () => this.props.history.push('/posts')));
+    this.props.onSubmit(this.state, () => this.props.history.push('/posts'));
   }
 
   handleFieldChange(field) {
@@ -63,7 +63,7 @@ class EditPostForm extends React.Component {
 
 EditPostForm.propTypes = {
   error: PropTypes.shape(),
-  dispatch: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired
@@ -73,8 +73,14 @@ EditPostForm.defaultProps = {
   error: {}
 };
 
+const mapDispatchToProps = dispatch => ({
+  onSubmit: (post, onSubmitted) => {
+    dispatch(submitPost(post, onSubmitted));
+  }
+});
+
 const mapStateToProp = state => ({
   error: state.posts.error
 });
 
-export default connect(mapStateToProp)(EditPostForm);
+export default connect(mapStateToProp, mapDispatchToProps)(EditPostForm);

@@ -15,12 +15,12 @@ class SignIn extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.dispatch(setSessionError(''));
+    this.props.setSessionError('');
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(submitSignin(this.state, () => this.props.history.push('/posts')));
+    this.props.submitSignin(this.state, () => this.props.history.push('/posts'));
   }
 
   handleFieldChange(field, event) {
@@ -94,7 +94,8 @@ SignIn.defaultProps = {
 };
 
 SignIn.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  submitSignin: PropTypes.func.isRequired,
+  setSessionError: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -107,4 +108,13 @@ const mapStateToProps = state => ({
   session: state.session
 });
 
-export default connect(mapStateToProps)(SignIn);
+const mapDispatchToProps = dispatch => ({
+  submitSignin: (credentials, onSubmitted) => {
+    dispatch(submitSignin(credentials, onSubmitted));
+  },
+  setSessionError: error => {
+    dispatch(setSessionError(error));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

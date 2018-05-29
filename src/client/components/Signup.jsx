@@ -16,7 +16,7 @@ class Signup extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.dispatch(submitSignup(this.state, () => this.props.history.push('/')));
+    this.props.submitSignup(this.state, () => this.props.history.push('/'));
   }
 
   handleFieldChange(field, event) {
@@ -87,7 +87,7 @@ Signup.defaultProps = {
 };
 
 Signup.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  submitSignup: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -100,4 +100,10 @@ const mapStateToProps = state => ({
   session: state.session
 });
 
-export default connect(mapStateToProps)(Signup);
+const mapDispatchToProps = dispatch => ({
+  submitSignup: (info, onSubmitted) => {
+    dispatch(submitSignup(info, onSubmitted));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);

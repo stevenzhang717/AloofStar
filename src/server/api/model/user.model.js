@@ -9,8 +9,8 @@ const User = db.define(
       primaryKey: true,
       autoIncrement: true
     },
-    name: { type: Sequelize.TEXT, unique: true, validate: { notEmpty: true, notNull: true } },
-    password_hashed: { type: Sequelize.TEXT, validate: { notEmpty: true, notNull: true } }
+    name: { type: Sequelize.TEXT, unique: true, allowNull: false, validate: { notEmpty: true } },
+    password_hashed: { type: Sequelize.TEXT, allowNull: false, validate: { notEmpty: true } }
   },
   { freezeTableName: true }
 );

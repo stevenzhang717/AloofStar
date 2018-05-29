@@ -15,7 +15,7 @@ class Posts extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchPosts);
+    this.props.fetchPosts();
   }
 
   render() {
@@ -25,7 +25,7 @@ class Posts extends React.Component {
     return (
       <div className="page--content">
         <h1>All Posts</h1>
-        <Link to={`${this.props.location.pathname}/create`}>Create Post</Link>
+        <Link to="posts/create">Create Post</Link>
         {this.props.posts.result.map(x => this.constructor.renderPost(x))}
       </div>
     );
@@ -35,16 +35,17 @@ class Posts extends React.Component {
 Posts.defaultProps = { posts: [] };
 
 Posts.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }),
   posts: PropTypes.shape(),
-  dispatch: PropTypes.func.isRequired
+  fetchPosts: PropTypes.func.isRequired
 };
 
-const mapStateToProp = state => ({
+const mapStateToProps = state => ({
   posts: state.posts,
   session: state.session
 });
 
-export default connect(mapStateToProp)(Posts);
+const mapDispatchToProps = dispatch => ({
+  fetchPosts: () => dispatch(fetchPosts)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Posts);
