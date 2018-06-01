@@ -1,4 +1,4 @@
-const User = require('../../model/user.model');
+const models = require('../../model');
 const jwt = require('jsonwebtoken');
 const uuid = require('uuid/v4');
 const utilities = require('../../../utilities');
@@ -22,7 +22,8 @@ function signin(req, res) {
     return;
   }
 
-  User.findOne({ where: { name: req.body.username }, rejectOnEmpty: true })
+  models.user
+    .findOne({ where: { name: req.body.username }, rejectOnEmpty: true })
     .then(found =>
       utilities
         .match(req.body.password, found.password_hashed)
@@ -48,7 +49,8 @@ function signup(req, res) {
   }
 
   utilities.hash(req.body.password).then(hash => {
-    User.create({ name: req.body.username, password_hashed: hash })
+    models.user
+      .create({ name: req.body.username, password_hashed: hash })
       .then(result => {
         res.json({ token: createToken(result) });
       })

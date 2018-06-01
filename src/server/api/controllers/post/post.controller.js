@@ -1,4 +1,4 @@
-const Post = require('../../model/post.model');
+const models = require('../../model');
 
 function handle(...args) {
   const result = args.map(x => x.get({ plain: true }));
@@ -6,13 +6,13 @@ function handle(...args) {
 }
 
 function getAllPosts(req, res) {
-  Post.findAll().spread((...args) => {
+  models.post.findAll().spread((...args) => {
     res.json(handle(...args));
   });
 }
 
 function savePost(req, res) {
-  Post.create(req.body).then(result => {
+  models.post.create(req.body).then(result => {
     res.json(result);
   });
 }

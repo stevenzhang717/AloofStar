@@ -8,7 +8,8 @@ module.exports = env => {
     output: {
       filename: 'bundle.js',
       path: resolvePath('dist'),
-      pathinfo: !!env.dev
+      pathinfo: !!env.dev,
+      publicPath: '/'
     },
     devtool: 'source-map',
     module: {

@@ -40,7 +40,11 @@ export const submitPost = (post, onSubmitted) => dispatch => {
   }
 
   if (_.isEmpty(error)) {
-    axios.post('/api/posts', post).then(result => onSubmitted(result));
+    axios
+      .post('/api/posts', post, {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      })
+      .then(result => onSubmitted(result));
   } else {
     dispatch(validateFailed(error));
   }
