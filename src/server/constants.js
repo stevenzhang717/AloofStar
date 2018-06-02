@@ -12,8 +12,13 @@ const signupError = {
   USED_USERNAME: 'USED_USERNAME'
 };
 
+const postsError = {
+  UNAUTHORIZED: 'UNAUTHORIZED'
+};
+
 module.exports = {
   sessionError,
   loginErrors,
-  signupError
+  signupError,
+  postsError
 };

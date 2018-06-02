@@ -1,4 +1,5 @@
 const models = require('../../model');
+const constants = require('../../../constants');
 
 function handle(...args) {
   const result = args.map(x => x.get({ plain: true }));
@@ -12,7 +13,11 @@ function getAllPosts(req, res) {
 }
 
 function savePost(req, res) {
-  models.post.create(req.body).then(result => {
+  if (!req.user) {
+    res.status(403).json({ erro: constants.postsError.UNAUTHORIZED });
+  }
+
+  models.post.create({ ...req.body, userId: req.user.id }).then(result => {
     res.json(result);
   });
 }

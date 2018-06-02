@@ -25,18 +25,19 @@ class Posts extends React.Component {
     return (
       <div className="page--content">
         <h1>All Posts</h1>
-        <Link to="posts/create">Create Post</Link>
+        {this.props.session.isAuthenticated() ? <Link to="posts/create">Create Post</Link> : ''}
         {this.props.posts.result.map(x => this.constructor.renderPost(x))}
       </div>
     );
   }
 }
 
-Posts.defaultProps = { posts: [] };
+Posts.defaultProps = { posts: [], session: {} };
 
 Posts.propTypes = {
   posts: PropTypes.shape(),
-  fetchPosts: PropTypes.func.isRequired
+  fetchPosts: PropTypes.func.isRequired,
+  session: PropTypes.shape()
 };
 
 const mapStateToProps = state => ({
