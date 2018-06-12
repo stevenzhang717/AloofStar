@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Button } from '@material-ui/core';
+import Input from './LabeledInput';
 
 import { submitSignup } from '../actions/session';
 import { sessionError, signupError } from '../../shared/constants';
@@ -30,52 +32,46 @@ class Signup extends React.Component {
   render() {
     const error = { username: '', password: '' };
 
-    switch (this.props.session.error) {
-      case sessionError.EMPTY_USERNAME:
-        error.username = 'Username cannot be empty.';
-        break;
-      case sessionError.EMPTY_PASSWORD:
-        error.password = 'Password cannot be empty';
-        break;
-      case signupError.USED_USERNAME:
-        error.username = 'Username has already been taken.';
-        break;
-      default:
-        break;
+    if (this.props.session && this.props.session.error) {
+      switch (this.props.session.error) {
+        case sessionError.EMPTY_USERNAME:
+          error.username = 'Username cannot be empty.';
+          break;
+        case sessionError.EMPTY_PASSWORD:
+          error.password = 'Password cannot be empty';
+          break;
+        case signupError.USED_USERNAME:
+          error.username = 'Username has already been taken.';
+          break;
+        default:
+          break;
+      }
     }
 
     return (
       <div className="page--content">
         <h1>Sign Up</h1>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="username">
-              User Name:
-              <input
-                name="username"
-                id="username"
-                className="signup--input--username"
-                type="text"
-                value={this.state.username}
-                onChange={this.handleUsernameChange}
-              />
-            </label>
-            <p>{error.username}</p>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password
-              <input
-                name="password"
-                id="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.handlePasswordChange}
-              />
-            </label>
-            <p>{error.password}</p>
-          </div>
-          <input className="signup--input--submit" type="submit" value="Submit" />
+          <Input
+            name="username"
+            label="User Name"
+            type="text"
+            value={this.state.username}
+            onChange={this.handleUsernameChange}
+            error={error.username}
+          />
+          <Input
+            name="password"
+            label="Password"
+            className="password"
+            type="password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            error={error.password}
+          />
+          <Button variant="flat" type="submit" value="Submit">
+            Submit
+          </Button>
         </form>
       </div>
     );

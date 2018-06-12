@@ -2,55 +2,48 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { AppBar, Toolbar, Button } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { signout } from '../actions/session';
 
 const Navigation = props => (
   <header>
-    <nav>
-      <ul className="nav--list">
-        <li className="nav--listItem--left">
-          <Link className="nav--link" to="/">
-            Home
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
+          <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/">
+            Steven Zhang
           </Link>
-        </li>
-        <li className="nav--listItem--left">
-          <Link className="nav--link" to="/posts">
-            Posts
-          </Link>
-        </li>
-        <li className="nav--listItem--left">About</li>
-        <li className="nav--listItem--left">Contact</li>
-        {props.session.isAuthenticated() ? (
-          <span>
-            <li className="nav--listItem--right">
-              <Link className="nav--link" to="/" onClick={props.onSignout}>
-                Sign Out
-              </Link>
-            </li>
-            <li className="nav--listItem--right">{props.session.name}</li>
-          </span>
+        </Typography>
+        <Button color="inherit" size="large" href="/posts">
+          Posts
+        </Button>
+        {props.session && props.session.isAuthenticated && props.session.isAuthenticated() ? (
+          <Button color="inherit" size="large" onClick={props.onSignout}>
+            Signout
+          </Button>
         ) : (
           <span>
-            <li className="nav--listItem--right">
-              <Link className="nav--link" to="/signin">
-                Sign In
-              </Link>
-            </li>
-            <li className="nav--listItem--right">
-              <Link className="nav--link" to="/signup">
-                Sign Up
-              </Link>
-            </li>
+            <Button color="inherit" size="large" href="/signin">
+              Signin
+            </Button>
+            <Button color="inherit" size="large" href="/signup">
+              Signup
+            </Button>
           </span>
         )}
-      </ul>
-    </nav>
+      </Toolbar>
+    </AppBar>
   </header>
 );
 
 Navigation.propTypes = {
-  session: PropTypes.shape().isRequired,
+  session: PropTypes.shape(),
   onSignout: PropTypes.func.isRequired
+};
+
+Navigation.defaultProps = {
+  session: null
 };
 
 const mapDispatchToProps = dispatch => ({

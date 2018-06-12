@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './components/App';
-
-require('./index.css');
+import './index.css';
 
 ReactDom.render(<App />, document.getElementById('container'));

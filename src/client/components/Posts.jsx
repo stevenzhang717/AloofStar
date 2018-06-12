@@ -25,7 +25,11 @@ class Posts extends React.Component {
     return (
       <div className="page--content">
         <h1>All Posts</h1>
-        {this.props.session.isAuthenticated() ? <Link to="posts/create">Create Post</Link> : ''}
+        {this.props.session && this.props.session.isAuthenticated() ? (
+          <Link to="posts/create">Create Post</Link>
+        ) : (
+          ''
+        )}
         {this.props.posts.result.map(x => this.constructor.renderPost(x))}
       </div>
     );

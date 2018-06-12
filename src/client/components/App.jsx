@@ -3,14 +3,15 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Navigation from './Navigation';
-import Header from './Header';
 import Posts from './Posts';
 import Home from './Home';
 import EditPostForm from './EditPostForm';
 import reducers from '../reducers';
 import SignIn from './Signin';
 import Signup from './Signup';
+import SessionInitializer from './SessionInitializer';
 
 const App = () => (
   <Provider
@@ -21,8 +22,9 @@ const App = () => (
   >
     <Router>
       <div>
+        <CssBaseline />
+        <SessionInitializer />
         <Route path="/" component={Navigation} />
-        <Route path="/" component={Header} />
         <Route exact path="/" component={Home} />
         <Route exact path="/posts" component={Posts} />
         <Route exact path="/posts/create" component={EditPostForm} />

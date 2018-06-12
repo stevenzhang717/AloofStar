@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
+
 import 'react-quill/dist/quill.snow.css';
 
 import { submitPost } from '../actions/posts';
@@ -47,14 +49,21 @@ class EditPostForm extends React.Component {
             />
           </label>
           <p>{this.props.error.title}</p>
-          <ReactQuill
-            name="content"
-            type="text"
-            value={this.state.content || ''}
-            onChange={this.handleContentChange}
-          />
+          <div style={{ height: '50vh' }}>
+            <ReactQuill
+              style={{ height: '40vh' }}
+              name="content"
+              type="text"
+              value={this.state.content || ''}
+              onChange={this.handleContentChange}
+            />
+          </div>
           <p>{this.props.error.content}</p>
-          <input className="post--input--submit" type="submit" value="Submit" />
+          <div>
+            <Button variant="flat" type="submit" value="Submit">
+              Submit
+            </Button>
+          </div>
         </form>
       </div>
     );

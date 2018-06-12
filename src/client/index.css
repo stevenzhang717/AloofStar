@@ -2,7 +2,7 @@ body {
   min-width: 960px;
   width: 100%;
   margin: 0px;
-  background-image: url(assets/background.jpg);
+  background-image: url('public/bk.jpg');
   font-family: Arial;
 }
 .nav--list {
@@ -27,12 +27,12 @@ body {
 }
 
 .nav--link {
-  color:inherit;
-  text-decoration: none
+  color: inherit;
+  text-decoration: none;
 }
 
 .header {
-  opacity:0.8;
+  opacity: 0.8;
   display: block;
   background-color: white;
   border-bottom: 5px dashed rgb(14, 90, 104);
@@ -50,7 +50,8 @@ body {
   max-width: 950px;
   width: 100%;
   height: 100vh;
-  background-color: AliceBlue;
+  padding: 20px;
+  background-color: white;
   position: relative;
   margin: 0 auto;
 }
@@ -64,11 +65,11 @@ body {
   width: 800px;
   height: 500px;
   margin: 10px;
-  resize: none
+  resize: none;
 }
 
 .post--input--submit {
-  display: block
+  display: block;
 }
 
 .summary {

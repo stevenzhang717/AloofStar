@@ -18,7 +18,7 @@ export const submitSignin = (credentials, onSignIn) => dispatch => {
     .post('/api/users/signin', credentials)
     .then(result => {
       localStorage.setItem('token', result.data.token);
-      dispatch(setSession(createSession()));
+      dispatch(setSession(createSession(result.data.token)));
       onSignIn();
     })
     .catch(error => {
@@ -31,7 +31,7 @@ export const submitSignup = (registration, onSignup) => dispatch => {
     .post('/api/users/signup', registration)
     .then(result => {
       localStorage.setItem('token', result.data.token);
-      dispatch(setSession(createSession()));
+      dispatch(setSession(createSession(result.data.token)));
       onSignup();
     })
     .catch(error => {
@@ -41,5 +41,5 @@ export const submitSignup = (registration, onSignup) => dispatch => {
 
 export const signout = dispatch => {
   localStorage.removeItem('token');
-  dispatch(setSession());
+  dispatch(setSession(null));
 };

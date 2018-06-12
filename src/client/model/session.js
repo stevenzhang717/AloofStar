@@ -1,7 +1,6 @@
 import jwtDecode from 'jwt-decode';
 
-function createSession() {
-  const token = localStorage.getItem('token');
+function createSession(token) {
   const session = jwtDecode(token);
   const exp = new Date(session.exp * 1000);
 
