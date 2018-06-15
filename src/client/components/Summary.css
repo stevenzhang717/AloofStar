@@ -1,0 +1,7 @@
+.summary {
+  width: 450px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 2px dashed darkblue;
+  float: left;
+}

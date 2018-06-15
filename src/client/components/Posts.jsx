@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
 import { fetchPosts } from '../actions/posts';
+import TitleRow from './PostTitleRow';
 
 class Posts extends React.Component {
-  static renderPost(post) {
-    return (
-      <div className="post--section" key={post.id}>
-        <h2>{post.title}</h2>
-        <div className="post--content" dangerouslySetInnerHTML={{ __html: post.content }} />
-      </div>
-    );
-  }
-
   componentDidMount() {
     this.props.fetchPosts();
   }
@@ -24,13 +16,21 @@ class Posts extends React.Component {
     }
     return (
       <div className="page--content">
-        <h1>All Posts</h1>
+        <h1 style={{ display: 'inline', textAlign: 'right' }}>All Posts</h1>
         {this.props.session && this.props.session.isAuthenticated() ? (
-          <Link to="posts/create">Create Post</Link>
+          <Button variant="flat" href="posts/create">
+            Create Post
+          </Button>
         ) : (
           ''
         )}
-        {this.props.posts.result.map(x => this.constructor.renderPost(x))}
+        <ul>
+          {this.props.posts.result.map(p => (
+            <li>
+              <TitleRow key={p.id} title={p.title} />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }

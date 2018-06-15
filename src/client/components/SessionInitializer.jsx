@@ -12,13 +12,6 @@ class SessionInitializer extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    const token = localStorage.getItem('token');
-    if (!token && this.props.session) {
-      this.props.clearSession();
-    }
-  }
-
   render() {
     return null;
   }
@@ -26,8 +19,7 @@ class SessionInitializer extends React.Component {
 
 SessionInitializer.propTypes = {
   session: PropTypes.shape(),
-  setSessionFromToken: PropTypes.func.isRequired,
-  clearSession: PropTypes.func.isRequired
+  setSessionFromToken: PropTypes.func.isRequired
 };
 
 SessionInitializer.defaultProps = {
@@ -38,8 +30,7 @@ const mapStateToProps = state => ({
   session: state.session
 });
 const mapDispatchToProps = dispatch => ({
-  setSessionFromToken: token => dispatch(setSession(createSession(token))),
-  clearSession: () => dispatch(setSession(null))
+  setSessionFromToken: token => dispatch(setSession(createSession(token)))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionInitializer);

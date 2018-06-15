@@ -1,0 +1,17 @@
+body {
+  min-width: 960px;
+  width: 100%;
+  margin: 0px;
+  background-image: url('public/bk.jpg');
+  font-family: Arial;
+}
+
+.page--content {
+  max-width: 950px;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  margin: 0 auto;
+}

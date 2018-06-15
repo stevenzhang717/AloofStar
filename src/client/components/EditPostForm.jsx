@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-
 import 'react-quill/dist/quill.snow.css';
 
+import './EditPostForm.css';
 import { submitPost } from '../actions/posts';
 
 class EditPostForm extends React.Component {
