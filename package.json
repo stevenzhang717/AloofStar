@@ -39,6 +39,7 @@
     "axios": "^0.18.0",
     "bcrypt": "^2.0.1",
     "body-parser": "^1.18.2",
+    "dotenv": "^6.0.0",
     "express": "^4.16.2",
     "express-jwt": "^5.3.1",
     "jsonwebtoken": "^8.2.1",
@@ -64,12 +65,10 @@
     "prebuild:prod": "rimraf dist",
     "build:prod": "webpack --env.prod -p",
     "prestart": "rimraf dist",
-    "start":
-      "webpack --env.dev | cross-env SECRET_KEY=mysecret nodemon --inspect ./src/server/index.js",
+    "start": "webpack --env.dev | nodemon --inspect ./src/server/index.js",
     "prestart:prod": "rimraf dist",
-    "start:prod": "webpack --env.prod -p | SECRET_KEY=mysecret node ./src/server/index.js",
-    "inspect:dev":
-      "cross-env SECRET_KEY=mysecret nodemon  --ignore ['./src/client'] --inspect ./src/server/index.js",
+    "start:prod": "webpack --env.prod -p | node ./src/server/index.js",
+    "inspect:dev": "nodemon  --ignore ['./src/client'] --inspect ./src/server/index.js",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.jsx\""
   }
 }
