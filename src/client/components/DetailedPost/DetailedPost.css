@@ -1,0 +1,9 @@
+.detailed-post {
+  max-width: 90vh;
+  height: 100vh;
+  padding: 4vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}

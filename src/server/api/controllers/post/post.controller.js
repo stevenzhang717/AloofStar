@@ -12,6 +12,12 @@ function getAllPosts(req, res) {
   });
 }
 
+function getPost(req, res) {
+  models.post.findOne({ where: { id: Number(req.params.postId) } }).then(result => {
+    res.json({ id: result.id, title: result.title, content: result.content });
+  });
+}
+
 function savePost(req, res) {
   if (!req.user) {
     res.status(403).json({ erro: constants.postsError.UNAUTHORIZED });
@@ -22,4 +28,4 @@ function savePost(req, res) {
   });
 }
 
-module.exports = { getAllPosts, savePost };
+module.exports = { getAllPosts, savePost, getPost };

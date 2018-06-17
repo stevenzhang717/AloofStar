@@ -9,4 +9,6 @@ postRouter
   .get(postController.getAllPosts)
   .post(jwt({ secret: process.env.SECRET_KEY }), postController.savePost);
 
+postRouter.route('/:postId').get(postController.getPost);
+
 module.exports = postRouter;

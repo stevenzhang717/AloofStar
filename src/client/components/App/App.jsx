@@ -11,7 +11,8 @@ import './App.css';
 import AsyncComponent from './AsyncComponent';
 
 const Home = AsyncComponent(() => import('../Home').then(module => module.default));
-const Posts = AsyncComponent(() => import('../Posts/Posts').then(module => module.default));
+const Posts = AsyncComponent(() => import('../Posts').then(module => module.default));
+const DetailedPost = AsyncComponent(() => import('../DetailedPost').then(module => module.default));
 const EditPostForm = AsyncComponent(() => import('../EditPostForm').then(module => module.default));
 const SignIn = AsyncComponent(() => import('../SignIn/Signin').then(module => module.default));
 const Siginup = AsyncComponent(() => import('../Signup/Signup').then(module => module.default));
@@ -19,7 +20,7 @@ const Siginup = AsyncComponent(() => import('../Signup/Signup').then(module => m
 const App = () => (
   <Provider
     store={createStore(
-      combineReducers({ posts: reducers.posts, session: reducers.session }),
+      combineReducers({ posts: reducers.posts, session: reducers.session, post: reducers.post }),
       applyMiddleware(thunk)
     )}
   >
@@ -31,6 +32,7 @@ const App = () => (
         <div className="page">
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={Posts} />
+          <Route exact path="/post/:id" component={DetailedPost} />
           <Route exact path="/posts/create" component={EditPostForm} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/signup" component={Siginup} />

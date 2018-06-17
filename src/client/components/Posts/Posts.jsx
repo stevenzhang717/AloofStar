@@ -32,7 +32,7 @@ class Posts extends React.Component {
         <ul>
           {this.props.posts.result.map(p => (
             <li key={p.id}>
-              <TitleRow title={p.title} />
+              <TitleRow title={p.title} link={`/post/${p.id}`} />
             </li>
           ))}
         </ul>

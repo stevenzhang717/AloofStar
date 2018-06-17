@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 
 const PostTitleRow = props => (
   <Typography variant="headline" gutterBottom>
-    <Link to="/" style={{ color: 'inherit', textDecoration: 'inherit' }}>
+    <Link to={props.link} style={{ color: 'inherit', textDecoration: 'inherit' }}>
       {props.title}
     </Link>
   </Typography>
 );
 
 PostTitleRow.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
 };
 
 export default PostTitleRow;
