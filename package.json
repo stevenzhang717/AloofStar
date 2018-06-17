@@ -9,15 +9,18 @@
   "private": false,
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.41",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.41",
     "@babel/preset-react": "^7.0.0-beta.41",
     "@types/sequelize": "^4.27.4",
     "babel-eslint": "^8.1.2",
     "babel-loader": "8.0.0-beta.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^0.28.8",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-webpack": "^0.10.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.4.0",
@@ -57,6 +60,7 @@
   "scripts": {
     "prebuild:dev": "rimraf dist",
     "build:dev": "webpack --env.dev",
+    "build:prod": "webpack --env.prod -p",
     "start": "SECRET_KEY=mysecret node ./src/server/index.js",
     "inspect:dev": "SECRET_KEY=mysecret nodemon --inspect ./src/server/index.js",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.jsx\""
