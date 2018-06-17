@@ -3,7 +3,8 @@
 This is a small blogging system using modern web technology in order to demonstrate my skills in this area.
 
 ## Environment
-In order to avoid problems related to some of the node packages on Windows. I recommend running it on Linux/Mac. 
+
+In order to avoid problems related to some of the node packages on Windows. I recommend running it on Linux/Mac.
 
 Please also have the following software installed:
 **Node**: v8.11.1
@@ -11,15 +12,20 @@ Please also have the following software installed:
 
 ## Installation
 
-1. Please first clone this repo
+1.  Please first clone this repo
+
 ```bash
 git clone https://github.com/stevenzhang717/AloofStar.git
 ```
-2. cd into the project folder, install using yarn
+
+2.  cd into the project folder, install using yarn
+
 ```bash
 yarn install
 ```
-3. Run the following command to start the server
+
+3.  Run the following command to start the server
+
 ```bash
 # development
 yarn start
@@ -27,15 +33,21 @@ yarn start
 # production
 yarn start:prod
 ```
-4. open browser, navigate to http://localhost:8080
 
+4.  open browser, navigate to http://localhost:8080
 
 ## Functionalities
 
 This project is still under active development, currently it has the following functionalities:
 
- - Sign Up for new user
- - Sign In with credientials
- - Creating new post (only for logged in user)
- - View the list of posts
- - Sign out
+* Sign Up for new user
+* Sign In with credientials
+* Creating new post (only for logged in user)
+* View the list of posts
+* Sign out
+
+## Database
+
+For development purposes, this project is currently using sqlite database.
+
+**Please note that the database will be cleared out and re-sync with the schema everytime the server restart.**
