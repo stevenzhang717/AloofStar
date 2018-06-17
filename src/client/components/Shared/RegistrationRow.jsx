@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
-function LabeledInput({ name, label, className, type, value, onChange, error }) {
+function RegistrationRow({ name, label, className, type, value, onChange, error }) {
   return (
     <div>
       <TextField
@@ -21,7 +21,7 @@ function LabeledInput({ name, label, className, type, value, onChange, error }) 
   );
 }
 
-LabeledInput.propTypes = {
+RegistrationRow.propTypes = {
   name: PropTypes.string,
   label: PropTypes.string,
   className: PropTypes.string,
@@ -31,7 +31,7 @@ LabeledInput.propTypes = {
   error: PropTypes.string
 };
 
-LabeledInput.defaultProps = {
+RegistrationRow.defaultProps = {
   name: '',
   label: '',
   className: '',
@@ -41,4 +41,4 @@ LabeledInput.defaultProps = {
   error: ''
 };
 
-export default LabeledInput;
+export default RegistrationRow;

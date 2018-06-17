@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import createSession from '../model/session';
-import { setSession } from '../actions/session';
+import createSession from '../../model/session';
+import { setSession } from '../../actions/session';
 
 class SessionInitializer extends React.Component {
   componentDidMount() {

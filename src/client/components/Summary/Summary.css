@@ -1,0 +1,9 @@
+.summary {
+  display: flex;
+  align-items: flex-start;
+  padding: 5em;
+}
+
+.summary-img {
+  margin-right: 1em;
+}

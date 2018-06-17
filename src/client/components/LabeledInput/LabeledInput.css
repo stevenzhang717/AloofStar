@@ -1,0 +1,17 @@
+.label-input {
+  display: flex;
+  flex-direction: column;
+}
+.label-input-error {
+  height: 1vh;
+  color: red;
+  font-weight: bold;
+}
+.label-input-label {
+  display: flex;
+  width: 100%;
+  font-weight: bold;
+}
+.label-input-input {
+  flex: 1;
+}

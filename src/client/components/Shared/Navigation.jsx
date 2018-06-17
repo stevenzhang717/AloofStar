@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import { signout } from '../actions/session';
+import { signout } from '../../actions/session';
 
 const Navigation = props => (
   <header>

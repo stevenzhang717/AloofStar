@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { fetchPosts } from '../actions/posts';
-import TitleRow from './PostTitleRow';
+import { fetchPosts } from '../../actions/posts';
+import './Posts.css';
+import TitleRow from '../Shared/PostTitleRow';
 
 class Posts extends React.Component {
   componentDidMount() {
@@ -12,22 +13,26 @@ class Posts extends React.Component {
 
   render() {
     if (this.props.posts.loading) {
-      return <h1>Loading</h1>;
+      return (
+        <div className="posts">
+          <h2>Loading</h2>
+        </div>
+      );
     }
     return (
-      <div className="page--content">
-        <h1 style={{ display: 'inline', textAlign: 'right' }}>All Posts</h1>
-        {this.props.session && this.props.session.isAuthenticated() ? (
-          <Button variant="flat" href="posts/create">
-            Create Post
-          </Button>
-        ) : (
-          ''
-        )}
+      <div className="posts">
+        <div className="posts-title-row">
+          <h1>All Posts</h1>
+          {this.props.session && this.props.session.isAuthenticated() ? (
+            <Button variant="flat" href="posts/create">
+              Create Post
+            </Button>
+          ) : null}
+        </div>
         <ul>
           {this.props.posts.result.map(p => (
-            <li>
-              <TitleRow key={p.id} title={p.title} />
+            <li key={p.id}>
+              <TitleRow title={p.title} />
             </li>
           ))}
         </ul>

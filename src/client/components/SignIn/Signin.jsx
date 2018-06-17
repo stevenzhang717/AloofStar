@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import Input from './LabeledInput';
+import Input from '../Shared/RegistrationRow';
 
-import { submitSignin, setSessionError } from '../actions/session';
-import { sessionError, loginErrors } from '../../shared/constants';
+import { submitSignin, setSessionError } from '../../actions/session';
+import { sessionError, loginErrors } from '../../../shared/constants';
+import './SignIn.css';
 
 class SignIn extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class SignIn extends React.Component {
     }
 
     return (
-      <div className="page--content">
+      <div className="signin">
         <h1>Sign In</h1>
         <form onSubmit={this.handleSubmit}>
           <Input

@@ -1,0 +1,17 @@
+.posts {
+  max-width: 90vh;
+  height: 100vh;
+  padding: 4vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.posts-title-row {
+  display: flex;
+}
+
+.posts-title-row h1 {
+  flex: 1;
+}

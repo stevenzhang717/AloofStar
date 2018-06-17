@@ -1,0 +1,9 @@
+.home {
+  max-width: 90vh;
+  height: 100vh;
+  padding: 1vh;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}

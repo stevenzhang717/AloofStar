@@ -6,7 +6,8 @@ import { Button } from '@material-ui/core';
 import 'react-quill/dist/quill.snow.css';
 
 import './EditPostForm.css';
-import { submitPost } from '../actions/posts';
+import { submitPost } from '../../actions/posts';
+import LabeledInput from '../LabeledInput';
 
 class EditPostForm extends React.Component {
   constructor(props) {
@@ -34,22 +35,17 @@ class EditPostForm extends React.Component {
 
   render() {
     return (
-      <div className="page--content">
+      <div className="edit-post">
         <h1>Create New Posts</h1>
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">
-            Title:
-            <input
-              name="title"
-              id="title"
-              className="post--input--title"
-              type="text"
-              value={this.state.title}
-              onChange={this.handleTitleChange}
-            />
-          </label>
-          <p>{this.props.error.title}</p>
-          <div style={{ height: '50vh' }}>
+          <LabeledInput
+            name="title"
+            label="Title: "
+            value={this.state.title}
+            onChange={this.handleTitleChange}
+            error={this.props.error.title}
+          />
+          <div style={{ height: '45vh' }}>
             <ReactQuill
               style={{ height: '40vh' }}
               name="content"
@@ -58,7 +54,7 @@ class EditPostForm extends React.Component {
               onChange={this.handleContentChange}
             />
           </div>
-          <p>{this.props.error.content}</p>
+          <p className="edit-post-content-error">{this.props.error.content}</p>
           <div>
             <Button variant="flat" type="submit" value="Submit">
               Submit
