@@ -66,7 +66,7 @@
     "prebuild:prod": "rimraf dist",
     "build:prod": "webpack --env.prod -p",
     "prestart": "rimraf dist",
-    "start": "webpack --env.prod -p | node ./src/server/index.js",
+    "start": "webpack --env.prod -p && node ./src/server/index.js",
     "prestart:prod": "rimraf dist",
     "start:prod": "webpack --env.dev | nodemon --inspect ./src/server/index.js",
     "inspect:dev": "nodemon  --ignore ['./src/client'] --inspect ./src/server/index.js",
