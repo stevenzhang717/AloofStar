@@ -16,6 +16,7 @@
     "babel-eslint": "^8.1.2",
     "babel-loader": "8.0.0-beta.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^0.28.8",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -60,9 +61,15 @@
   "scripts": {
     "prebuild:dev": "rimraf dist",
     "build:dev": "webpack --env.dev",
+    "prebuild:prod": "rimraf dist",
     "build:prod": "webpack --env.prod -p",
-    "start": "SECRET_KEY=mysecret node ./src/server/index.js",
-    "inspect:dev": "SECRET_KEY=mysecret nodemon --inspect ./src/server/index.js",
+    "prestart": "rimraf dist",
+    "start":
+      "webpack --env.dev | cross-env SECRET_KEY=mysecret nodemon --inspect ./src/server/index.js",
+    "prestart:prod": "rimraf dist",
+    "start:prod": "webpack --env.prod -p | SECRET_KEY=mysecret node ./src/server/index.js",
+    "inspect:dev":
+      "cross-env SECRET_KEY=mysecret nodemon  --ignore ['./src/client'] --inspect ./src/server/index.js",
     "format": "prettier --write \"src/**/*.js\" \"src/**/*.jsx\""
   }
 }
