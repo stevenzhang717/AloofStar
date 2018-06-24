@@ -2,7 +2,30 @@
 
 This is a small blogging system using modern web technology in order to demonstrate my skills in this area.
 
-## Environment
+## Demo
+
+There is a deployment of this application at heroku
+Please navigate to: https://aloofstar.herokuapp.com/
+
+## Docker support
+
+if you are using Linux or Mac with docker installation running, simply go to the project directory and run
+
+```bash
+make
+```
+
+if you are using Windows with docker installation running. You will need to go to the project directory, run the following commands
+
+```bash
+docker build -t steven:prod .
+docker run -d -p 8080:8080 steven:prod
+```
+
+Please wait a few seconds for the project to build and the server to start.
+Then Open browser, navigate to http://localhost:8080
+
+## Dev Environment
 
 In order to avoid problems related to some of the node packages on Windows. I recommend running it on Linux/Mac.
 
@@ -28,10 +51,10 @@ yarn install
 
 ```bash
 # development
-yarn start
+yarn start:dev
 
 # production
-yarn start:prod
+yarn start
 ```
 
 4.  open browser, navigate to http://localhost:8080
