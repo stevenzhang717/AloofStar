@@ -6,7 +6,7 @@ const Summary = () => (
     <div className="summary-img">
       <img src="public/profile.jpg" alt="personal" height="200" width="200" />
     </div>
-    <div className="summary-content">
+    <div>
       <h2>Personal Summary</h2>
       <p>
         I work as a full stack developer at WiseTech Global on a tech stack based on Windows Forms,
@@ -25,6 +25,38 @@ const Summary = () => (
         &#9679; Code reviews for not only Sydney developers, but also developers in Chinese office,
         providing them not only advices for their coding style and solution design, but also
         knowledge of the module
+      </p>
+      <h2>Skills</h2>
+      <p>
+        <strong>Programming Languages: </strong>
+        <span>C#, Javascript, T-SQL</span>
+      </p>
+      <p>
+        <strong>Frameworks: </strong>
+        <span>ASP .NET Core, ExpressJS, Sequelize, React, Redux</span>
+      </p>
+      <p>
+        <strong>Markup Languages: </strong>
+        <span>HTML, XML</span>
+      </p>
+      <p>
+        <strong>Tooling: </strong>
+        <span>Visual Studio, Visual Studio Code, Webpack, Babel, ESLint, Prettier, Git, TFS</span>
+      </p>
+      <p>
+        <strong>Database: </strong>
+        <span>
+          SQL Server, Stored Procedures, Functions, Performance Tuning (execution plan analysis,
+          profiler, indexing etc.)
+        </span>
+      </p>
+      <p>
+        <strong>Practice and Workflow: </strong>
+        <span>Agile, Test Driven Development, Continuous Integration</span>
+      </p>
+      <p>
+        <strong>Patterns: </strong>
+        <span>Web MVC and various enterprise design patterns</span>
       </p>
     </div>
   </div>

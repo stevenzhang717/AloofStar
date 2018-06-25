@@ -10,12 +10,24 @@ import SessionInitializer from '../StateManagementComponent/SessionInitializer';
 import './App.css';
 import AsyncComponent from './AsyncComponent';
 
-const Home = AsyncComponent(() => import('../Home').then(module => module.default));
-const Posts = AsyncComponent(() => import('../Posts').then(module => module.default));
-const DetailedPost = AsyncComponent(() => import('../DetailedPost').then(module => module.default));
-const EditPostForm = AsyncComponent(() => import('../EditPostForm').then(module => module.default));
-const SignIn = AsyncComponent(() => import('../SignIn/Signin').then(module => module.default));
-const Siginup = AsyncComponent(() => import('../Signup/Signup').then(module => module.default));
+const Home = AsyncComponent(() =>
+  import('../Home' /* webpackChunkName: "home" */).then(module => module.default)
+);
+const Posts = AsyncComponent(() =>
+  import('../Posts' /* webpackChunkName: "posts" */).then(module => module.default)
+);
+const DetailedPost = AsyncComponent(() =>
+  import('../DetailedPost' /* webpackChunkName: "detailedPost" */).then(module => module.default)
+);
+const EditPostForm = AsyncComponent(() =>
+  import('../EditPostForm' /* webpackChunkName: "editPost" */).then(module => module.default)
+);
+const SignIn = AsyncComponent(() =>
+  import('../SignIn/Signin' /* webpackChunkName: "signin" */).then(module => module.default)
+);
+const Siginup = AsyncComponent(() =>
+  import('../Signup/Signup' /* webpackChunkName: "signup" */).then(module => module.default)
+);
 
 const App = () => (
   <Provider

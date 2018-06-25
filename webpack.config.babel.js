@@ -7,6 +7,7 @@ module.exports = env => {
     entry: './index.jsx',
     output: {
       filename: 'bundle.js',
+      chunkFilename: '[name].lazy-chunk.js',
       path: resolvePath('dist'),
       pathinfo: !!env.dev,
       publicPath: '/'
