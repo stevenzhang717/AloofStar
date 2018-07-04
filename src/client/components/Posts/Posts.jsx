@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { fetchPosts } from '../../actions/posts';
 import './Posts.css';
@@ -23,10 +24,12 @@ class Posts extends React.Component {
       <div className="posts">
         <div className="posts-title-row">
           <h1>All Posts</h1>
-          {this.props.session && this.props.session.isAuthenticated() ? (
-            <Button variant="flat" href="posts/create">
-              Create Post
-            </Button>
+          {this.props.session &&
+          this.props.session.isAuthenticated &&
+          this.props.session.isAuthenticated() ? (
+            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="posts/create">
+              <Button variant="flat">Create Post</Button>
+            </Link>
           ) : null}
         </div>
         <ul>
@@ -58,4 +61,7 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Posts);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Posts);

@@ -10,26 +10,32 @@ const Navigation = props => (
   <header>
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
-          <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/">
+        <Link style={{ color: 'inherit', textDecoration: 'inherit', flex: 1 }} to="/">
+          <Typography variant="headline" color="inherit">
             Steven Zhang
-          </Link>
-        </Typography>
-        <Button color="inherit" size="large" href="/posts">
-          Posts
-        </Button>
+          </Typography>
+        </Link>
+        <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/posts">
+          <Button color="inherit" size="large">
+            Posts
+          </Button>
+        </Link>
         {props.session && props.session.isAuthenticated && props.session.isAuthenticated() ? (
           <Button color="inherit" size="large" onClick={props.onSignout}>
             Signout
           </Button>
         ) : (
           <span>
-            <Button color="inherit" size="large" href="/signin">
-              Signin
-            </Button>
-            <Button color="inherit" size="large" href="/signup">
-              Signup
-            </Button>
+            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/signin">
+              <Button color="inherit" size="large">
+                Sign In
+              </Button>
+            </Link>
+            <Link style={{ color: 'inherit', textDecoration: 'inherit' }} to="/signup">
+              <Button color="inherit" size="large">
+                Sign Up
+              </Button>
+            </Link>
           </span>
         )}
       </Toolbar>
@@ -54,4 +60,7 @@ const mapStateToProps = state => ({
   session: state.session
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Navigation);

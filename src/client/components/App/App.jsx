@@ -40,7 +40,7 @@ const App = () => (
       <div>
         <CssBaseline />
         <SessionInitializer />
-        <Route path="/" component={Navigation} />
+        <Navigation />
         <div className="page">
           <Route exact path="/" component={Home} />
           <Route exact path="/posts" component={Posts} />
