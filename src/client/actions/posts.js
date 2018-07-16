@@ -1,5 +1,4 @@
 import axios from 'axios';
-import _ from 'lodash';
 
 export const FETCHING_POSTS = 'FETCHING_POSTS';
 export const fetching = () => ({
@@ -39,7 +38,7 @@ export const submitPost = (post, onSubmitted) => dispatch => {
     error.content = 'Content cannot be empty';
   }
 
-  if (_.isEmpty(error)) {
+  if (!error.title && !error.content) {
     axios
       .post('/api/posts', post, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
